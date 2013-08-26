@@ -1,0 +1,27 @@
+@<Tuple>
+
+%! Comment !%
+Object Shape {
+	open:
+		int fn GetXPosition
+		noret fn SetXPosition(x, y)
+	closed:
+		int x, y
+}
+
+%!
+
+	Can be a block comment.
+
+!%
+fn run {
+	Tuple t = args.toTuple;
+	
+	int i = 3 + 32 - 7;
+	
+	from i to t.Size {
+		i = i / 9;
+	}
+	
+	inout.Display("Hello World!");
+}

@@ -1,0 +1,3 @@
+fn run {
+    out('Hello, World!');    
+}
