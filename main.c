@@ -74,14 +74,14 @@ int main( int argc, char* argv[] ) {
 
                 break;
             case BAD_EXTENSION:
-                Error( "Expected a file in the format of '< filename >.max'" );
+                Error( "Expected a file in the format of '< filename >.xwell'" );
                 break;
             default:
                 Error( "Unknown FILECHECK_t Error" );
         }
     } else {
         char msgbf[ 50 ];
-        sprintf( msgbf, "Usage - %s %s", argv[ 0 ], "< filename >.max" );
+        sprintf( msgbf, "Usage - %s %s", argv[ 0 ], "< filename >.xwell" );
 
         Error( msgbf );
     }
@@ -93,13 +93,14 @@ int main( int argc, char* argv[] ) {
 
 FILECHECK_t ValidateFilename( const char* filename ) {
         int length = 0;
+        size_t EXT_LENGTH = 6;
         int cmp = -1;
         FILECHECK_t result = FILE_OK;
 
         length = strlen( filename );
 
-        if ( length > 4 ) {
-            cmp = strcmp( filename + (length - 4), ".max" );
+        if ( length > EXT_LENGTH ) {
+            cmp = strcmp( filename + (length - EXT_LENGTH), ".xwell" );
         }
 
         if ( cmp != 0 ) {

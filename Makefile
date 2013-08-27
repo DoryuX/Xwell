@@ -3,7 +3,7 @@ CFLAGS=-c -Wall
 LDFLAGS=
 SOURCES=main.c
 OBJECTS=$(SOURCES:.c=.o)
-EXEC=max
+EXEC=xwell
 
 all: $(SOURCES) $(EXEC)
 
