@@ -8,9 +8,9 @@ extern void parse_get_char( void );
 extern void parse_get_name( void );
 extern void parse_get_num( void );
 
-extern int parse_is_addop( const char *c );
+extern int parse_is_addop( const char c );
 
-extern void parse_match( const char *s );
+extern void parse_match( const char s );
 extern void parse_init( const char *filename );
 
 extern void parse_expression( void );

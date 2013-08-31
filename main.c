@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <ctype.h>
 
 #include "utils.h"
@@ -9,6 +10,7 @@ FILE *g_fptr = NULL;
 
 int main( int argc, char *argv[] ) {
     char *filename = NULL;
+    char *msg = NULL;
 
     if ( argc == 2 ) {
         filename = argv[ 1 ];
@@ -24,18 +26,20 @@ int main( int argc, char *argv[] ) {
 
                 break;
             case BAD_EXTENSION:
-                utils_error( "Expected a file in the format of '< filename >.xwell'" );
+                msg = "Expected a file in the format of '< filename >.xwell'";
+                utils_error( msg, strlen( msg ) );
                 break;
             default:
-                utils_error( "Unknown FILECHECK_t Error" );
+                msg = "Unknown FILECHECK_t Error";
+                utils_error( msg, strlen( msg ) );
         }
     } else {
-        char msgbf[ 50 ] = "\0";
-        sprintf( msgbf, "Usage - %s %s", argv[ 0 ], "< filename >.xwell" );
-
-        utils_error( msgbf );
+        char msgbf[ 100 ] = "\0";
+        size_t n = sprintf( msgbf, "Usage - %s %s", argv[ 0 ], "< filename >.xwell" );
+        utils_error( msgbf, n );
     }
 
+    msg = NULL;
     filename = NULL;
 
     exit( EXIT_SUCCESS );

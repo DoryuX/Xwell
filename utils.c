@@ -22,20 +22,20 @@ FILECHECK_t utils_validate_filename( const char *filename ) {
         return result;
 }
 
-void utils_error( const char *msg ) {
-    printf( "ERROR: %s\n", msg );
+void utils_error( const char *msg, const size_t size ) {
+    printf( "ERROR: %.*s\n", ( int ) size, msg );
 }
 
-void utils_abort( const char *msg ) {
-    utils_error( msg );
+void utils_abort( const char *msg, const size_t size ) {
+    utils_error( msg, size );
     exit( EXIT_FAILURE );
 }
 
 void utils_expected( const char *msg ) {
     char msgbf[ 50 ] = "\0";
-    sprintf( msgbf, "Expected - '%s'", msg );
+    size_t n = sprintf( msgbf, "Expected - '%s'", msg );
     
-    utils_abort( msgbf );
+    utils_abort( msgbf, n );
 }
 
 void utils_print_file( FILE *fptr ) {
@@ -46,6 +46,7 @@ void utils_print_file( FILE *fptr ) {
             printf( "%c", ch );
         }
     } else {
-        utils_error( "File Content DNE" );
+        char *msg = "File Content DNE";
+        utils_error( msg, strlen( msg ) );
     }
 }
