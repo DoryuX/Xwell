@@ -2,7 +2,6 @@ CC=gcc
 CFLAGS=-c -Wall
 LDFLAGS=
 SOURCES=main.c \
-		ident.h \
 		utils.c \
 		parse.c
 OBJECTS=$(SOURCES:.c=.o)
